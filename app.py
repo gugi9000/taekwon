@@ -1,7 +1,13 @@
 from flask import Flask, redirect, render_template
-import poomsae
+import poomsae, wod
 
 app = Flask(__name__)
+
+
+@app.route('/wod')
+def workout():
+    workouts = wod.get_workout()
+    return render_template('wod.html', workouts=workouts)
 
 
 @app.route('/poom')
@@ -13,7 +19,7 @@ def show_poomsae(max_poomsae=8):
     selected = poomsae.random_poomsae_list(max_poomsae)
     print(selected)
     total_moves = sum([poomsae[2] for poomsae in selected])
-    return render_template('index.html', poomsae_list=poomsae_list, random_list=selected, total_moves=total_moves)
+    return render_template('poomsae.html', poomsae_list=poomsae_list, random_list=selected, total_moves=total_moves)
 
 
 @app.route('/')

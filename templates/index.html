@@ -1,32 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
 <h1>Hjælp til din træning.</h1>
-    {%  if random_list %}
-<p>Træn dine figurer i denne rækkefølge:</p>
-  <ul class="list-group list-group-flush">
-    {%  for name, korean_name, moves in random_list %}
-       <li class="list-group-item">{{ name }} - {{ korean_name }} - {{ moves }} tællinger</li>
-    {% endfor %}
-    </ul>
 
-    <p>I alt {{ total_moves }} tællinger :)</p>
-<hr>
-{% endif %}
-
-    <p>Det er ikke altid bedst eller sjovest at træne sine figurer fra 1 - 19, så her kan du få en tilfældig rækkefølge.</p>
-
-    <p>Vælg din højeste figur (poomsae/taeguek):</p>
-    <table>
-    <tr><td>Nummer</td><td>Navn</td><td>Hangeul</td></tr>
-    {%  for number, poomsae in poomsae_list.items() %}
-        <tr>
-        <td>{{ number }}</td>
-        <td><a href="/poom/{{ number }}">{{ poomsae[0] }}</a></td>
-        <td>{{ poomsae[1] }}</td>
-        </tr>
-    {% endfor %}
-
-    </table>
+<p><a href="/poom">Træn dine figurer i denne rækkefølge</a></p>
+<p><a href="/wod">Workout of the day - WOD</a></p>
 
 {#<pre>{{ poomsae_list }}</pre>#}
 {%  endblock %}
